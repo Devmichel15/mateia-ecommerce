@@ -1,3 +1,4 @@
+import Category from "../Components/Category"
 import Hero from "../Components/Hero"
 import Header from "../Components/Header"
 function Home() {
@@ -5,6 +6,7 @@ function Home() {
         <div className="px-3">
             <Header />
             <Hero />
+            <Category />
         </div>
     )
 }   

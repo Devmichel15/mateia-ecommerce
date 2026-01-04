@@ -1,81 +1,104 @@
 import { motion } from "framer-motion";
-import { Smartphone, Monitor, Watch, Headphones } from "lucide-react";
+import {
+  Smartphone,
+  Monitor,
+  Watch,
+  Headphones,
+  ArrowRight,
+} from "lucide-react";
 
 const categories = [
   {
     name: "Mobile",
-    icon: <Smartphone size={32} />,
-    count: "1.2k+ Produtos",
-    color: "bg-angola-red",
+    icon: <Smartphone size={40} strokeWidth={1} />,
+    count: "Explorar Elite",
+    color: "text-angola-red",
   },
   {
     name: "Estações Pro",
-    icon: <Monitor size={32} />,
-    count: "850+ Produtos",
-    color: "bg-angola-black",
+    icon: <Monitor size={40} strokeWidth={1} />,
+    count: "Vanguarda Digital",
+    color: "text-white",
   },
   {
     name: "Acessórios",
-    icon: <Watch size={32} />,
-    count: "2k+ Produtos",
-    color: "bg-angola-yellow",
+    icon: <Watch size={40} strokeWidth={1} />,
+    count: "Curadoria Gold",
+    color: "text-angola-yellow",
   },
   {
     name: "Áudio Elite",
-    icon: <Headphones size={32} />,
-    count: "500+ Produtos",
-    color: "bg-angola-red",
+    icon: <Headphones size={40} strokeWidth={1} />,
+    count: "Som Patriota",
+    color: "text-angola-red",
   },
 ];
 
 function Category() {
   return (
-    <section className="py-24 px-6 md:px-16 bg-white relative overflow-hidden">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-16 gap-4">
-          <h2 className="text-3xl md:text-4xl font-black text-angola-black">
-            Navegue por <span className="text-angola-red">Categorias</span>
-          </h2>
-          <div className="h-px flex-1 bg-gray-100 mx-8 hidden md:block"></div>
-          <span className="text-gray-400 text-sm font-bold uppercase tracking-widest">
-            Encontre o que deseja
-          </span>
+    <section className="py-40 bg-white relative overflow-hidden">
+      <div className="absolute inset-0 bg-noise opacity-[0.02] pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 md:px-16">
+        <div className="mb-24 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
+          <motion.div
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            className="space-y-6"
+          >
+            <span className="text-angola-red font-bold uppercase tracking-[0.4em] text-[10px]">
+              Arquivos Mateia
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none text-angola-black">
+              Universo de <br />
+              <span className="text-gradient-patriotic">Possibilidades</span>
+            </h2>
+          </motion.div>
+          <p className="text-gray-400 font-light text-lg max-w-sm italic">
+            "Categorias desenhadas para atender o mais alto rigor estético e
+            funcional."
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
           {categories.map((cat, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, scale: 0.9 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ delay: index * 0.1 }}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1, duration: 0.8 }}
               viewport={{ once: true }}
-              whileHover={{ y: -10 }}
-              className="group cursor-pointer"
+              className="group relative h-[450px] overflow-hidden bg-angola-black rounded-[48px] cursor-pointer"
             >
-              <div className="relative bg-gray-50 rounded-[40px] p-10 flex flex-col items-center gap-6 overflow-hidden transition-all duration-500 group-hover:bg-angola-black group-hover:shadow-2xl">
-                {/* Background Pattern */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-angola-pattern opacity-[0.03] group-hover:opacity-10 transition-opacity"></div>
+              <div className="absolute inset-0 bg-noise opacity-10"></div>
+              <div className="absolute inset-0 bg-cultural-mesh opacity-10 group-hover:opacity-20 transition-opacity"></div>
 
+              <div className="absolute inset-0 bg-linear-to-b from-transparent via-transparent to-angola-black/80"></div>
+
+              <div className="relative h-full p-12 flex flex-col justify-between z-10">
                 <div
-                  className={`w-20 h-20 ${cat.color} text-white rounded-[28px] flex items-center justify-center shadow-lg group-hover:scale-110 group-hover:rotate-12 transition-all duration-500`}
+                  className={`w-20 h-20 rounded-3xl border border-white/10 flex items-center justify-center ${cat.color} group-hover:scale-110 group-hover:bg-white group-hover:text-angola-black transition-all duration-700`}
                 >
                   {cat.icon}
                 </div>
 
-                <div className="flex flex-col items-center gap-2">
-                  <h3 className="text-xl font-black text-angola-black group-hover:text-white transition-colors">
-                    {cat.name}
-                  </h3>
-                  <span className="text-gray-400 text-xs font-bold uppercase tracking-widest group-hover:text-angola-yellow transition-colors">
+                <div className="space-y-4">
+                  <span className="text-angola-yellow font-bold text-[10px] uppercase tracking-[0.3em]">
                     {cat.count}
                   </span>
-                </div>
-
-                <div className="mt-4 opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-8 h-1 bg-angola-red rounded-full"></div>
+                  <h3 className="text-3xl font-black text-white tracking-tighter group-hover:text-angola-red transition-colors">
+                    {cat.name}
+                  </h3>
+                  <div className="flex items-center gap-4 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500">
+                    <div className="h-px flex-1 bg-white/20"></div>
+                    <ArrowRight size={20} className="text-white" />
+                  </div>
                 </div>
               </div>
+
+              {/* Hover Glow */}
+              <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-angola-red/20 blur-[100px] opacity-0 group-hover:opacity-100 transition-opacity"></div>
             </motion.div>
           ))}
         </div>

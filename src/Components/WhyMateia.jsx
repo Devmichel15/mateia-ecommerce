@@ -1,79 +1,221 @@
 import { motion } from "framer-motion";
-import { Zap, ShieldCheck, HeartPulse, Truck } from "lucide-react";
+
+const ArtisticIcon = ({ type, colorClass }) => {
+  const icons = {
+    agilidade: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        <defs>
+          <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop
+              offset="0%"
+              style={{ stopColor: "var(--color-angola-red)", stopOpacity: 1 }}
+            />
+            <stop
+              offset="100%"
+              style={{
+                stopColor: "var(--color-angola-yellow)",
+                stopOpacity: 1,
+              }}
+            />
+          </linearGradient>
+        </defs>
+        <path
+          d="M50 5 L90 25 L90 75 L50 95 L10 75 L10 25 Z"
+          fill="none"
+          stroke="url(#grad1)"
+          strokeWidth="1"
+          strokeDasharray="5,5"
+        />
+        <path
+          d="M30 50 L45 65 L75 35"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="4"
+          strokeLinecap="round"
+        />
+        <circle
+          cx="50"
+          cy="50"
+          r="40"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="0.5"
+          opacity="0.3"
+        />
+      </svg>
+    ),
+    seguranca: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        <path
+          d="M50 10 C30 10 20 20 20 40 C20 70 50 90 50 90 C50 90 80 70 80 40 C80 20 70 10 50 10 Z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+        />
+        <path
+          d="M50 30 V60 M40 45 H60"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="5"
+          strokeLinecap="round"
+        />
+        <path
+          d="M50 5 L50 15 M95 50 L85 50 M50 95 L50 85 M5 50 L15 50"
+          stroke="currentColor"
+          strokeWidth="1"
+        />
+      </svg>
+    ),
+    comunidade: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        <circle
+          cx="50"
+          cy="35"
+          r="15"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+        />
+        <path
+          d="M20 85 C20 65 35 55 50 55 C65 55 80 65 80 85"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+        />
+        <path
+          d="M50 5 L90 50 L50 95 L10 50 Z"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1"
+          strokeDasharray="2,2"
+        />
+      </svg>
+    ),
+    logistica: (
+      <svg viewBox="0 0 100 100" className="w-full h-full">
+        <path
+          d="M10 50 H90 M70 30 L90 50 L70 70"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+        />
+        <rect
+          x="20"
+          y="35"
+          width="40"
+          height="30"
+          rx="4"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="3"
+        />
+        <circle cx="35" cy="75" r="5" stroke="currentColor" strokeWidth="2" />
+        <circle cx="55" cy="75" r="5" stroke="currentColor" strokeWidth="2" />
+      </svg>
+    ),
+  };
+  return <div className={`w-16 h-16 ${colorClass}`}>{icons[type]}</div>;
+};
 
 const benefits = [
   {
-    icon: <Zap className="text-angola-yellow" />,
-    title: "Agilidade Máxima",
+    type: "agilidade",
+    title: "Agilidade Soberana",
     description:
-      "Processamento ultra-rápido para que receba seus produtos no menor tempo possível.",
+      "Cada entrega é um compromisso com a dinâmica moderna do nosso país.",
+    color: "text-angola-red",
   },
   {
-    icon: <ShieldCheck className="text-angola-red" />,
-    title: "Compra Segura",
+    type: "seguranca",
+    title: "Escudo de Confiança",
     description:
-      "Sistemas protegidos e garantia Mateia em todas as suas transações.",
+      "Tecnologia de ponta protegendo o patrimônio e os dados de cada cidadão.",
+    color: "text-angola-yellow",
   },
   {
-    icon: <HeartPulse className="text-angola-black" />,
-    title: "Apoio à Comunidade",
+    type: "comunidade",
+    title: "Legado e Comunidade",
     description:
-      "Parte de cada compra é reinvestida em projetos sociais e desenvolvimento local.",
+      "Investimos parte de cada transação no futuro e desenvolvimento da nossa terra.",
+    color: "text-angola-black",
   },
   {
-    icon: <Truck className="text-angola-yellow" />,
-    title: "Logística Nacional",
-    description: "Entregas em todas as províncias com rastreio em tempo real.",
+    type: "logistica",
+    title: "Logística Conectada",
+    description:
+      "Unindo províncias e pessoas através de um sistema de distribuição impecável.",
+    color: "text-angola-red",
   },
 ];
 
 const WhyMateia = () => {
   return (
-    <section className="py-32 px-6 md:px-16 bg-white overflow-hidden">
-      <div className="container mx-auto">
-        <div className="text-center mb-20">
+    <section className="py-40 bg-white relative overflow-hidden">
+      {/* Background Zen Pattern */}
+      <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none"></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-cultural-mesh opacity-20 pointer-events-none"></div>
+
+      <div className="container mx-auto px-6 md:px-16 relative z-10">
+        <div className="flex flex-col items-center text-center mb-24">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="flex flex-col items-center gap-4"
+            className="flex flex-col items-center gap-6"
           >
-            <span className="bg-angola-black text-white px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest">
-              Diferenciais
-            </span>
-            <h2 className="text-4xl md:text-5xl font-black text-angola-black">
-              Porquê Escolher a <span className="text-angola-red">Mateia</span>?
+            <div className="flex items-center gap-3">
+              <span className="w-12 h-px bg-angola-red"></span>
+              <span className="text-angola-red font-bold uppercase tracking-[0.4em] text-[10px]">
+                Excelência Nacional
+              </span>
+              <span className="w-12 h-px bg-angola-red"></span>
+            </div>
+            <h2 className="text-5xl md:text-7xl font-black text-angola-black tracking-tighter leading-none">
+              A Arte de <br />
+              <span className="text-gradient-patriotic">Servir Angola</span>
             </h2>
-            <div className="w-20 h-1 bg-angola-yellow rounded-full"></div>
+            <p className="max-w-xl text-gray-500 font-light leading-relaxed mt-4">
+              Transcendemos o e-commerce tradicional para criar uma experiência
+              de consumo que celebra a nossa identidade e impulsiona o
+              progresso.
+            </p>
           </motion.div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
+              transition={{ delay: index * 0.15, duration: 0.8 }}
               viewport={{ once: true }}
-              className="group p-10 bg-gray-50 rounded-[40px] flex flex-col items-center text-center gap-6 hover:bg-angola-black transition-all duration-500 relative overflow-hidden"
+              className="card-artistic group p-12 flex flex-col items-start gap-8"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-angola-pattern opacity-5 group-hover:opacity-10 transition-opacity"></div>
-
-              <div className="w-20 h-20 bg-white shadow-xl rounded-[28px] flex items-center justify-center text-3xl group-hover:scale-110 group-hover:rotate-12 transition-all duration-500 border border-gray-100">
-                {benefit.icon}
+              <div className="relative">
+                <div className="absolute inset-0 bg-angola-red/5 rounded-full blur-2xl group-hover:bg-angola-red/10 transition-colors"></div>
+                <div className="relative transform group-hover:scale-110 group-hover:rotate-3 transition-transform duration-500">
+                  <ArtisticIcon
+                    type={benefit.type}
+                    colorClass={benefit.color}
+                  />
+                </div>
               </div>
 
-              <div className="flex flex-col gap-3 relative z-10">
-                <h3 className="text-xl font-black text-angola-black group-hover:text-white transition-colors">
+              <div className="space-y-4">
+                <h3 className="text-2xl font-black text-angola-black leading-tight">
                   {benefit.title}
                 </h3>
-                <p className="text-gray-500 text-sm leading-relaxed group-hover:text-white/60 transition-colors">
+                <div className="w-8 h-1 bg-angola-yellow rounded-full group-hover:w-16 transition-all duration-500"></div>
+                <p className="text-gray-500 text-sm font-light leading-relaxed">
                   {benefit.description}
                 </p>
               </div>
 
-              <div className="w-12 h-1 bg-angola-red rounded-full opacity-0 group-hover:opacity-100 transition-opacity"></div>
+              {/* Decorative Number */}
+              <span className="absolute bottom-8 right-12 text-8xl font-black text-gray-50 opacity-[0.03] pointer-events-none group-hover:text-angola-red group-hover:opacity-[0.05] transition-all">
+                0{index + 1}
+              </span>
             </motion.div>
           ))}
         </div>

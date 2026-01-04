@@ -1,140 +1,133 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Heart, Eye, ShoppingCart } from "lucide-react";
+import { motion } from "framer-motion";
+import { ShoppingBag, Star, Heart, ArrowUpRight } from "lucide-react";
 
 const products = [
   {
     id: 1,
-    name: "Headphone Elite Mateia",
-    price: "45.000",
-    category: "Premium Audio",
-    image: "/headphone.png",
-    tag: "Exclusivo",
-    color: "angola-red",
+    name: "Como convercer alguém em 90 segundos",
+    price: "5.000 Kz",
+    category: "Edição Limitada",
+    image: "/livro1.png",
+    rating: 5,
+    color: "bg-angola-black",
   },
   {
     id: 2,
-    name: "Smartphone Kwanza Pro",
-    price: "250.000",
-    category: "Tecnologia",
-    image: "/headphone.png",
-    tag: "Lançamento",
-    color: "angola-black",
+    name: "As armas da persuasão",
+    price: "3.000 Kz",
+    category: "Cidadania",
+    image: "/livro2.png",
+    rating: 4,
+    color: "bg-angola-red",
   },
   {
     id: 3,
-    name: "Relógio Palanca Gold",
-    price: "35.000",
-    category: "Acessórios",
-    image: "/headphone.png",
-    tag: "Popular",
-    color: "angola-yellow",
+    name: "O poder do subconsciente",
+    price: "2.000 Kz",
+    category: "Tecnologia",
+    image: "/livro3.png",
+    rating: 5,
+    color: "bg-angola-yellow",
   },
-  {
-    id: 4,
-    name: "MateiaBook Pro 16",
-    price: "450.000",
-    category: "Computadores",
-    image: "/headphone.png",
-    tag: "Esgotando",
-    color: "angola-red",
-  },
+ 
 ];
 
-const FeaturedProducts = () => {
+const ProductCard = ({ product, index }) => {
   return (
-    <section className="py-32 px-6 md:px-16 bg-white relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 bg-angola-pattern opacity-[0.02] pointer-events-none"></div>
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1, duration: 0.8 }}
+      viewport={{ once: true }}
+      className="card-artistic group h-full flex flex-col"
+    >
+      <div className="relative aspect-4/5 overflow-hidden bg-gray-50">
+        <div className="absolute inset-0 bg-noise opacity-5 z-10"></div>
+        <img
+          src={product.image}
+          alt={product.name}
+          className="w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110 filter brightness-90 group-hover:brightness-100 shadow-inner"
+        />
 
-      <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6 relative z-10">
-        <div className="flex flex-col gap-4">
-          <div className="flex items-center gap-2">
-            <span className="w-12 h-1 bg-angola-red rounded-full"></span>
-            <span className="text-angola-red font-bold uppercase tracking-widest text-sm">
-              Coleção 2026
-            </span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-black text-angola-black">
-            Destaques da <span className="text-angola-red">Nossa Terra</span>
-          </h2>
+        {/* Floating Actions */}
+        <div className="absolute top-6 right-6 flex flex-col gap-3 translate-x-12 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-500 z-20">
+          <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xl hover:bg-angola-red hover:text-white transition-colors">
+            <Heart size={20} />
+          </button>
+          <button className="w-12 h-12 bg-white rounded-full flex items-center justify-center shadow-xl hover:bg-angola-black hover:text-white transition-colors">
+            <ArrowUpRight size={20} />
+          </button>
         </div>
-        <button className="text-angola-black font-bold border-b-2 border-angola-yellow pb-1 hover:text-angola-red hover:border-angola-red transition-all uppercase tracking-wider text-sm">
-          Ver Toda a Loja
+
+        <div className="absolute top-6 left-6 z-20">
+          <span className="bg-angola-black/80 backdrop-blur-md text-white text-[9px] font-black uppercase tracking-[0.3em] px-4 py-2 rounded-full border border-white/10">
+            {product.category}
+          </span>
+        </div>
+
+        <div className="absolute inset-0 bg-linear-to-t from-angola-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
+
+        <button className="absolute bottom-6 left-6 right-6 py-4 bg-white text-angola-black font-black text-xs uppercase tracking-widest opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 rounded-2xl z-20 flex items-center justify-center gap-3 active:scale-95 shadow-2xl">
+          <ShoppingBag size={16} />
+          Adicionar à Bolsa
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 relative z-10">
-        {products.map((product, index) => (
+      <div className="p-8 flex flex-col flex-1 gap-4">
+        <div className="flex justify-between items-start gap-4">
+          <h3 className="text-xl font-black text-angola-black leading-tight group-hover:text-angola-red transition-colors">
+            {product.name}
+          </h3>
+          <div className="flex items-center gap-1 text-angola-yellow">
+            <Star size={14} fill="currentColor" />
+            <span className="text-xs font-bold text-angola-black">5.0</span>
+          </div>
+        </div>
+        <p className="text-2xl font-black text-angola-black mt-auto">
+          {product.price}
+        </p>
+      </div>
+    </motion.div>
+  );
+};
+
+const FeaturedProducts = () => {
+  return (
+    <section className="py-40 bg-[#FAFAFA] relative overflow-hidden">
+      <div className="container mx-auto px-6 md:px-16">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
           <motion.div
-            key={product.id}
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ delay: index * 0.1 }}
+            initial={{ opacity: 0, x: -30 }}
+            whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="group relative flex flex-col bg-gray-50/50 rounded-[32px] p-2 border border-transparent hover:border-gray-200 hover:bg-white hover:shadow-2xl transition-all duration-500"
+            className="space-y-6"
           >
-            {/* Image Container */}
-            <div className="aspect-4/5 bg-gray-100 rounded-[28px] overflow-hidden relative flex items-center justify-center p-8 group-hover:bg-white transition-colors">
-              {product.tag && (
-                <div className="absolute top-4 left-4 z-20">
-                  <span
-                    className={`bg-angola-black text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-widest border-l-2 border-angola-red`}
-                  >
-                    {product.tag}
-                  </span>
-                </div>
-              )}
-
-              <div className="absolute top-4 right-4 z-20 flex flex-col gap-2 opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300">
-                <button className="w-10 h-10 bg-white shadow-md rounded-full flex items-center justify-center text-angola-black hover:bg-angola-red hover:text-white transition-all">
-                  <Heart size={18} />
-                </button>
-                <button className="w-10 h-10 bg-white shadow-md rounded-full flex items-center justify-center text-angola-black hover:bg-angola-red hover:text-white transition-all">
-                  <Eye size={18} />
-                </button>
-              </div>
-
-              <motion.img
-                whileHover={{ scale: 1.1, rotate: -5 }}
-                src={product.image}
-                alt={product.name}
-                className="w-full h-full object-contain relative z-10 transition-transform duration-500"
-              />
-
-              {/* Quick Add Button */}
-              <button className="absolute bottom-4 left-4 right-4 bg-angola-black text-white py-3 rounded-2xl font-bold text-sm opacity-0 group-hover:opacity-100 translate-y-4 group-hover:translate-y-0 transition-all flex items-center justify-center gap-2 hover:bg-angola-red">
-                <Plus size={18} />
-                Adicionar ao Carrinho
-              </button>
-            </div>
-
-            {/* Info */}
-            <div className="p-6">
-              <span className="text-[10px] uppercase font-bold tracking-widest text-gray-400 mb-2 block">
-                {product.category}
-              </span>
-              <h3 className="text-xl font-black text-angola-black mb-3 group-hover:text-angola-red transition-colors capitalize">
-                {product.name}
-              </h3>
-              <div className="flex items-center justify-between mt-auto">
-                <div className="flex flex-col">
-                  <span className="text-xs text-gray-400 font-bold uppercase">
-                    Preço
-                  </span>
-                  <span className="text-2xl font-black text-angola-black">
-                    {product.price}{" "}
-                    <span className="text-sm font-bold text-angola-red">
-                      KZ
-                    </span>
-                  </span>
-                </div>
-                <div className="w-12 h-12 bg-angola-yellow rounded-2xl flex items-center justify-center text-angola-black group-hover:bg-angola-red group-hover:text-white transition-all shadow-lg shadow-angola-yellow/20 group-hover:shadow-angola-red/20 rotate-12 group-hover:rotate-0">
-                  <ShoppingCart size={20} />
-                </div>
-              </div>
-            </div>
+            <span className="text-angola-red font-bold uppercase tracking-[0.4em] text-[10px]">
+              Coleção 2024
+            </span>
+            <h2 className="text-5xl md:text-7xl font-black tracking-tighter leading-none">
+              Destaques da <br />
+              <span className="text-gradient-patriotic">Nossa Pátria</span>
+            </h2>
           </motion.div>
-        ))}
+
+          <motion.button
+            whileHover={{ x: 10 }}
+            className="group flex items-center gap-4 text-angola-black font-black text-sm uppercase tracking-widest border-b-2 border-angola-black pb-2"
+          >
+            Ver Catálogo Completo
+            <ArrowUpRight
+              size={20}
+              className="group-hover:rotate-45 transition-transform"
+            />
+          </motion.button>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+          {products.map((product, index) => (
+            <ProductCard key={product.id} product={product} index={index} />
+          ))}
+        </div>
       </div>
     </section>
   );

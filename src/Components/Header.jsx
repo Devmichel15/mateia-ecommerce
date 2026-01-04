@@ -1,6 +1,7 @@
 import { ShoppingCart, User, Search, Heart, Menu } from "lucide-react";
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -95,10 +96,12 @@ const Header = () => {
               0
             </span>
           </button>
+          <Link to="sign">
           <button className="hidden sm:flex items-center gap-2 bg-angola-black text-white px-4 py-2 rounded-full text-sm font-bold hover:bg-angola-red transition-colors shadow-md">
             <User size={18} />
             <span>Entrar</span>
           </button>
+          </Link>
           <button className="sm:hidden text-angola-black">
             <User size={22} />
           </button>

@@ -88,4 +88,33 @@
   .glass-card {
     @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
   }
+
+  /* Premium Artistic Textures */
+  .bg-noise {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3%3Ffilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+    opacity: 0.05;
+  }
+
+  .bg-cultural-mesh {
+    background-image: radial-gradient(
+      circle at 2px 2px,
+      rgba(230, 0, 0, 0.1) 1px,
+      transparent 0
+    );
+    background-size: 24px 24px;
+  }
+
+  .gold-glow {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.2);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+  }
+
+  .text-gradient-patriotic {
+    @apply bg-clip-text text-transparent bg-linear-to-r from-angola-red via-angola-yellow to-angola-gold;
+  }
+
+  .card-artistic {
+    @apply relative overflow-hidden transition-all duration-500 rounded-[48px] border border-gray-100 bg-white hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.08)] hover:-translate-y-2;
+  }
 }

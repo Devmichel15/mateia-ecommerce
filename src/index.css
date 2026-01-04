@@ -1,1 +1,91 @@
 @import "tailwindcss";
+
+@theme {
+  --font-heading: "Outfit", sans-serif;
+  --font-sans: "Inter", sans-serif;
+
+  --color-angola-red: #e60000;
+  --color-angola-black: #000000;
+  --color-angola-yellow: #ffd700;
+  --color-angola-gold: #d4af37;
+  --color-angola-white: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply font-sans bg-[#FAFAFA] text-angola-black;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer utilities {
+  .bg-angola-pattern {
+    background-color: #ffffff;
+    background-image: linear-gradient(
+        30deg,
+        #e60000 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #e60000 87.5%,
+        #e60000
+      ),
+      linear-gradient(
+        150deg,
+        #e60000 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #e60000 87.5%,
+        #e60000
+      ),
+      linear-gradient(
+        30deg,
+        #e60000 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #e60000 87.5%,
+        #e60000
+      ),
+      linear-gradient(
+        150deg,
+        #e60000 12%,
+        transparent 12.5%,
+        transparent 87%,
+        #e60000 87.5%,
+        #e60000
+      ),
+      linear-gradient(
+        60deg,
+        #ffd700 25%,
+        transparent 25.5%,
+        transparent 75%,
+        #ffd700 75.5%,
+        #ffd700
+      ),
+      linear-gradient(
+        60deg,
+        #ffd700 25%,
+        transparent 25.5%,
+        transparent 75%,
+        #ffd700 75.5%,
+        #ffd700
+      );
+    background-size: 80px 140px;
+    background-position: 0 0, 0 0, 40px 70px, 40px 70px, 0 0, 40px 70px;
+    opacity: 0.03;
+  }
+
+  .text-glow {
+    text-shadow: 0 0 10px rgba(230, 0, 0, 0.5);
+  }
+
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+}

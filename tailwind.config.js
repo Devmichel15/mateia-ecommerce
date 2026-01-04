@@ -4,10 +4,15 @@ export default {
   theme: {
     extend: {
       colors: {
-        "angola-red": "#D52B1E",
+        "angola-red": "#E60000",
         "angola-black": "#000000",
-        "angola-yellow": "#FCD116",
-        "angola-gold": "#F4C430",
+        "angola-yellow": "#FFD700",
+        "angola-gold": "#D4AF37",
+        "angola-white": "#FFFFFF",
+      },
+      fontFamily: {
+        sans: ["Inter", "sans-serif"],
+        heading: ["Outfit", "sans-serif"],
       },
     },
   },

@@ -3,7 +3,10 @@ import { ArrowRight, ShoppingBag, ShieldCheck } from "lucide-react";
 
 function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-angola-black">
+    <section
+      id="inicio"
+      className="relative min-h-screen flex items-center pt-24 overflow-hidden bg-angola-black"
+    >
       {/* Premium Background Layers */}
       <div className="absolute inset-0 z-0">
         <div className="absolute inset-0 bg-noise opacity-[0.05]"></div>

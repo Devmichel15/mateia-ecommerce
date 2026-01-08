@@ -24,7 +24,7 @@ const stats = [
 
 const AboutUs = () => {
   return (
-    <section className="py-40 bg-white relative overflow-hidden">
+    <section id="missao" className="py-40 bg-white relative overflow-hidden">
       <div className="absolute inset-0 bg-noise opacity-[0.03] pointer-events-none"></div>
 
       <div className="container mx-auto px-6 md:px-16">

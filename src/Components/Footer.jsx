@@ -84,13 +84,13 @@ const Footer = () => {
             </h4>
             <ul className="flex flex-col gap-4 text-white/40 font-light">
               <li className="hover:text-white transition-colors">
-                <a href="#">Coleções Premium</a>
+                <a href="#loja">Coleções Premium</a>
               </li>
               <li className="hover:text-white transition-colors">
-                <a href="#">Novidades</a>
+                <a href="#loja">Novidades</a>
               </li>
               <li className="hover:text-white transition-colors">
-                <a href="#">Edições Limitadas</a>
+                <a href="#categorias">Categorias</a>
               </li>
               <li className="hover:text-white transition-colors">
                 <a href="#">Cidadania</a>
@@ -103,10 +103,10 @@ const Footer = () => {
             </h4>
             <ul className="flex flex-col gap-4 text-white/40 font-light">
               <li className="hover:text-white transition-colors">
-                <a href="#">Nossa História</a>
+                <a href="#missao">Nossa História</a>
               </li>
               <li className="hover:text-white transition-colors">
-                <a href="#">Manifesto</a>
+                <a href="#missao">Manifesto</a>
               </li>
               <li className="hover:text-white transition-colors">
                 <a href="#">Sustentabilidade</a>

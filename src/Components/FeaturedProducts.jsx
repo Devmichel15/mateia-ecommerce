@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { ShoppingBag, Star, Heart, ArrowUpRight } from "lucide-react";
+import { useCart } from "../Context/CartContext";
 
 const products = [
   {
@@ -14,7 +15,7 @@ const products = [
   {
     id: 2,
     name: "As armas da persuasão",
-    price: "3.000 Kz",
+    price: "5.000 Kz",
     category: "Cidadania",
     image: "/livro2.png",
     rating: 4,
@@ -23,16 +24,17 @@ const products = [
   {
     id: 3,
     name: "O poder do subconsciente",
-    price: "2.000 Kz",
+    price: "5.000 Kz",
     category: "Tecnologia",
     image: "/livro3.png",
     rating: 5,
     color: "bg-angola-yellow",
   },
- 
 ];
 
 const ProductCard = ({ product, index }) => {
+  const { addToCart } = useCart();
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 50 }}
@@ -67,9 +69,12 @@ const ProductCard = ({ product, index }) => {
 
         <div className="absolute inset-0 bg-linear-to-t from-angola-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700"></div>
 
-        <button className="absolute bottom-6 left-6 right-6 py-4 bg-white text-angola-black font-black text-xs uppercase tracking-widest opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 rounded-2xl z-20 flex items-center justify-center gap-3 active:scale-95 shadow-2xl">
+        <button
+          onClick={() => addToCart(product)}
+          className="absolute bottom-6 left-6 right-6 py-4 bg-white text-angola-black font-black text-xs uppercase tracking-widest opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 rounded-2xl z-20 flex items-center justify-center gap-3 active:scale-95 shadow-2xl"
+        >
           <ShoppingBag size={16} />
-          Adicionar à Bolsa
+          Adicionar ao Carrinho
         </button>
       </div>
 
@@ -93,7 +98,7 @@ const ProductCard = ({ product, index }) => {
 
 const FeaturedProducts = () => {
   return (
-    <section className="py-40 bg-[#FAFAFA] relative overflow-hidden">
+    <section id="loja" className="py-40 bg-[#FAFAFA] relative overflow-hidden">
       <div className="container mx-auto px-6 md:px-16">
         <div className="flex flex-col md:flex-row justify-between items-end mb-24 gap-8">
           <motion.div

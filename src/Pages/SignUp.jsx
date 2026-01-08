@@ -4,11 +4,12 @@ import { User, Mail, Lock, ArrowRight, Home } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { useAuth } from "../Context/AuthContext";
 
-const SignIn = () => {
+const SignUp = () => {
+  const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const { login, isAuthenticated } = useAuth();
+  const { signUp, isAuthenticated } = useAuth();
   const navigate = useNavigate();
 
   // If already authenticated, redirect to home
@@ -22,7 +23,7 @@ const SignIn = () => {
     e.preventDefault();
     setError("");
 
-    const result = login(email, password);
+    const result = signUp(name, email, password);
     if (result.success) {
       navigate("/");
     } else {
@@ -56,15 +57,35 @@ const SignIn = () => {
         <div className="bg-white rounded-4xl shadow-2xl shadow-black/5 p-10 md:p-12 relative border border-gray-100">
           <div className="space-y-2 mb-10">
             <h1 className="text-4xl font-black tracking-tighter text-angola-black leading-none">
-              Bem-vindo de <br />
-              <span className="text-gradient-patriotic">Volta à Mateia</span>
+              Junte-se à <br />
+              <span className="text-gradient-patriotic">Nossa Elite</span>
             </h1>
             <p className="text-gray-500 text-sm font-medium">
-              Entre para continuar a sua experiência patriótica.
+              Crie a sua conta e apoie a revolução digital angolana.
             </p>
           </div>
 
           <form onSubmit={handleSubmit} className="space-y-6">
+            <div className="space-y-2">
+              <label className="text-[10px] font-black uppercase tracking-[0.2em] text-angola-black ml-1">
+                Nome Completo
+              </label>
+              <div className="relative group">
+                <User
+                  className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 group-focus-within:text-angola-red transition-colors"
+                  size={18}
+                />
+                <input
+                  type="text"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  placeholder="Seu nome"
+                  className="w-full bg-gray-50 border border-gray-100 py-4 pl-12 pr-4 rounded-2xl text-sm focus:outline-none focus:ring-2 focus:ring-angola-red/10 focus:bg-white focus:border-angola-red/20 transition-all font-medium"
+                  required
+                />
+              </div>
+            </div>
+
             <div className="space-y-2">
               <label className="text-[10px] font-black uppercase tracking-[0.2em] text-angola-black ml-1">
                 Email
@@ -119,7 +140,7 @@ const SignIn = () => {
               type="submit"
               className="w-full py-5 bg-angola-black text-white font-black text-xs uppercase tracking-[0.2em] rounded-2xl flex items-center justify-center gap-3 hover:bg-angola-red transition-all duration-300 shadow-xl shadow-black/10 active:scale-95 group"
             >
-              Entrar na Conta
+              Criar Minha Conta
               <ArrowRight
                 size={16}
                 className="group-hover:translate-x-1 transition-transform"
@@ -129,12 +150,12 @@ const SignIn = () => {
 
           <div className="mt-10 pt-8 border-t border-gray-50 text-center">
             <p className="text-gray-400 text-xs font-medium">
-              Não tem uma conta?{" "}
+              Já tem uma conta?{" "}
               <Link
-                to="/signup"
+                to="/sign"
                 className="text-angola-black font-bold hover:text-angola-red transition-colors"
               >
-                Criar conta patriótica
+                Entrar agora
               </Link>
             </p>
           </div>
@@ -144,4 +165,4 @@ const SignIn = () => {
   );
 };
 
-export default SignIn;
+export default SignUp;
